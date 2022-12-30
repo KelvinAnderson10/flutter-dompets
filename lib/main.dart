@@ -1,4 +1,4 @@
-import 'package:dompets/newItemForm.dart';
+import 'package:dompets/new_item_form.dart';
 import 'package:dompets/utils/transition.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
-          notchMargin: 10,
+          notchMargin: 5,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,9 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 onPressed: () {},
               )),
-              const Expanded(
-                  child: SizedBox()
-              ),
+              const Expanded(child: SizedBox()),
               Expanded(
                   child: IconButton(
                 icon: const Icon(
