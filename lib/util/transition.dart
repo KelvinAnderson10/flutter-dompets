@@ -15,5 +15,8 @@ Route createRoute(dynamic page) {
         child: child,
       );
     },
+    // Disable transitions
+    reverseTransitionDuration: Duration.zero,
+    transitionDuration: Duration.zero,
   );
 }

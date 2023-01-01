@@ -1,5 +1,9 @@
-import 'package:dompets/new_item_form.dart';
-import 'package:dompets/utils/transition.dart';
+import 'package:dompets/view/new_record_page.dart';
+import 'package:dompets/util/transition.dart';
+import 'package:dompets/view/account_page.dart';
+import 'package:dompets/view/dashboard_page.dart';
+import 'package:dompets/view/home_page.dart';
+import 'package:dompets/view/wishlist_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,35 +34,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  int _index = 0;
+  final pages = <Widget>[
+    const HomePage(),
+    const DashboardPage(),
+    const WishlistPage(),
+    const AccountPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Selamat Datang di Dompets',
-            ),
-          ],
-        ),
-      ),
+      body: pages[_index],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(createRoute(const NewItemForm()));
+          Navigator.of(context).push(createRoute(const NewRecordPage()));
         },
-        tooltip: 'Tambahkan catatan bar',
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -71,17 +61,21 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               Expanded(
                   child: IconButton(
-                icon: const Icon(
-                  Icons.home,
-                ),
-                onPressed: () {},
+                icon: const Icon(Icons.home),
+                onPressed: () => {
+                  setState(() => {_index = 0})
+                },
+                color: _index == 0 ? Colors.pink : Colors.grey,
               )),
               Expanded(
                   child: IconButton(
                 icon: const Icon(
                   Icons.summarize,
                 ),
-                onPressed: () {},
+                onPressed: () => {
+                  setState(() => {_index = 1})
+                },
+                color: _index == 1 ? Colors.pink : Colors.grey,
               )),
               const Expanded(child: SizedBox()),
               Expanded(
@@ -89,14 +83,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: const Icon(
                   Icons.receipt_long,
                 ),
-                onPressed: () {},
+                onPressed: () => {
+                  setState(() => {_index = 2})
+                },
+                color: _index == 2 ? Colors.pink : Colors.grey,
               )),
               Expanded(
                   child: IconButton(
                 icon: const Icon(
                   Icons.person,
                 ),
-                onPressed: () {},
+                onPressed: () => {
+                  setState(() => {_index = 3})
+                },
+                color: _index == 3 ? Colors.pink : Colors.grey,
               )),
             ],
           )),
